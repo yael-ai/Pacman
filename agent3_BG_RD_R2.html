@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="mystyle_Agent_1_rd.css">
+    <title>RD - Agent1</title>
+    <h1 id="header">Agent - Graph Explanation</h1>
+    <script src=https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js></script>
+
+</head>
+
+<body>
+    <div id="images">
+        <img id="pic_1" src="Random2_1_LIVE2471_blue_ghost.PNG" style="display:none;">
+        <img id="pic_2" src="Random2_2_LIVE2689_blue_ghost.PNG" style="display:none;">
+        <img id="pic_3" src="Random2_3_LIVE3154_blue_ghost.PNG" style="display:none;">
+        <img id="pic_4" src="Random2_4_LIVE3256_blie_ghost.PNG" style="display:none;">
+        <img id="pic_5" src="Random2_5_LIVE6210_blue_ghost.PNG" style="display:none;">
+
+    </div>
+
+
+    <!-- Create butons to display chart-->
+    <div id="mychart" style="display:none;">
+        <div id="chart_div" style="width:900px; height: 610px;"></div>
+    </div>
+    <div class=buttons>
+        <button id="button1" onclick="chartIt(num_video = 1,case_number=1 ,time_stemp = 1,bar='bar'), display_pic(id = 'button1', case_number=1);">Scenario 1 </button>
+        <button id="button2" onclick="chartIt(num_video = 1,case_number=2,time_stemp = 2,bar='bar'), display_pic (id = 'button2',case_number=2);">Scenario 2 </button>
+        <button id="button3" onclick="chartIt(num_video = 1,case_number=3,time_stemp = 3,bar='bar'), display_pic (id = 'button3',case_number=3);">Scenario 3</button>
+        <button id="button4" onclick="chartIt(num_video = 1,case_number=4,time_stemp = 4,bar='bar'), display_pic (id = 'button4' ,case_number=4);">Scenario 4</button>
+        <button id="button5" onclick="chartIt(num_video = 1,case_number=5,time_stemp = 5,bar='bar'), display_pic (id = 'button5' ,case_number=5);">Scenario 5</button>
+        <!-- <button id="button6" onclick="chartIt(num_video = 1,case_number=6,time_stemp = 6,bar='bar'), display_pic (id = 'button6' ,case_number=6);">Scenario 6</button>-->
+    </div>
+
+    <div class="text">
+        <h1 id=video_1_case></h1>
+        <h1 id=introduction_1></h1>
+        <h1 id="action_1"></h1>
+    </div>
+
+    <!--Create the BAR graph-->
+    <div class='Chart'>
+        <canvas id='bar'></canvas>
+    </div>
+
+
+</body>
+
+<!-- Starting the js code-->
+
+
+<script>
+    function display_pic(id, case_number) {
+        var a = 1;
+        if (case_number == 1) {
+            document.getElementById('pic_2').style.display = 'none';
+            document.getElementById('pic_3').style.display = 'none';
+            document.getElementById('pic_4').style.display = 'none';
+            document.getElementById('pic_5').style.display = 'none';
+
+            document.getElementById('pic_1').style.display = 'block';
+
+        }
+        if (case_number == 2) {
+            document.getElementById('pic_1').style.display = 'none';
+            document.getElementById('pic_3').style.display = 'none';
+            document.getElementById('pic_4').style.display = 'none';
+            document.getElementById('pic_5').style.display = 'none';
+            document.getElementById('pic_2').style.display = 'block';
+
+        }
+        if (case_number == 3) {
+            document.getElementById('pic_2').style.display = 'none';
+            document.getElementById('pic_1').style.display = 'none';
+            document.getElementById('pic_4').style.display = 'none';
+            document.getElementById('pic_5').style.display = 'none';
+            document.getElementById('pic_3').style.display = 'block';
+
+        }
+        if (case_number == 4) {
+            document.getElementById('pic_2').style.display = 'none';
+            document.getElementById('pic_3').style.display = 'none';
+            document.getElementById('pic_1').style.display = 'none';
+            document.getElementById('pic_5').style.display = 'none';
+            document.getElementById('pic_4').style.display = 'block';
+
+        }
+        if (case_number == 5) {
+            document.getElementById('pic_1').style.display = 'none';
+            document.getElementById('pic_2').style.display = 'none';
+            document.getElementById('pic_3').style.display = 'none';
+            document.getElementById('pic_4').style.display = 'none';
+            document.getElementById('pic_5').style.display = 'block';
+
+        }
+    }
+
+    async function chartIt(num_video, case_number, time_stemp, bar) {
+
+        //var sec = myVideo.currentTime
+        const data = await getData(num_video, time_stemp);
+        console.log(data)
+        const ctx = document.getElementById(bar).getContext('2d');
+        const myChart = new Chart(ctx, {
+
+            type: 'bar',
+            data: {
+                labels: data.xs_action,
+                datasets: [{
+                        label: ['Normal Pill'],
+                        data: data.ys_H1a,
+                        backgroundColor: ['rgba(255, 99, 132, 0.2)', ],
+                        borderColor: ['rgba(255, 99, 132, 1)', ],
+                        borderWidth: 1,
+                        stack: 'Stack 0',
+                    },
+
+                    {
+                        label: ['Power Pill'],
+                        data: data.ys_H2a,
+                        backgroundColor: ['rgba(54, 162, 235, 0.2)', ],
+                        borderColor: ['rgba(54, 162, 235, 1)', ],
+                        borderWidth: 1,
+                        stack: 'Stack 0',
+                    },
+
+                    {
+                        label: ['Eating Blue Ghosts'],
+                        data: data.ys_H3a,
+                        backgroundColor: ['rgb(144,238,144)', ],
+                        borderColor: ['rgb(0,128,0)', ],
+                        borderWidth: 1,
+                        stack: 'Stack 0',
+                    },
+
+                    {
+                        label: ['Dying'],
+                        data: data.ys_H4a,
+                        backgroundColor: ['rgba(255, 206, 86, 0.2)', ],
+                        borderColor: ['rgba(255, 206, 86, 1)', ],
+                        borderWidth: 1,
+                        stack: 'Stack 0',
+                    },
+
+                ],
+
+            },
+            options: {
+                scales: {
+                    x: {
+                        grid: {
+                            display: false,
+                        },
+
+                        ticks: {
+                            color: 'black',
+
+                        }
+                    },
+                    y: {
+                        grid: {
+                            display: false,
+                        },
+                        ticks: {
+                            /*stepSize: 0.5,*/
+                            stepSize: 2,
+                        }
+                    }
+                }
+            }
+
+        });
+
+        const all_buttons1 = ['button1', 'button2', 'button3', 'button4', 'button5']
+        for (let i = 0; i < all_buttons1.length; i++) {
+            id_of_button = all_buttons1[i]
+            document.getElementById(id_of_button).addEventListener('click', e => {
+                myChart.destroy();
+            });
+        }
+
+
+
+        // time_stemp = the time in wich the action changed!
+        async function getData(num_video, time_stemp) {
+            // var x = document.getElementById("secound ").value;
+            const xs_action = [];
+            //const ys_2_secound = [];
+            const max_value = [];
+            const ys_H1a = [];
+            const ys_H2a = [];
+            const ys_H3a = [];
+            const ys_H4a = [];
+            var response = await fetch('Final_RD_vlues_blue_ghost_Random2.csv')
+
+            const data = await response.text();
+
+            const row = data.split('\n').slice(1);
+
+            row.forEach(elt => {
+                const row = elt.split(',');
+                const time = row[0];
+
+
+                if (time == time_stemp) {
+                    // for the next row:
+                    H1_Q1 = row[1];
+                    H1_Q2 = row[2];
+                    H1_Q3 = row[3];
+                    H1_Q4 = row[4];
+                    H1_Q5 = row[5];
+                    H1_Q6 = row[6];
+                    H1_Q7 = row[7];
+                    H1_Q8 = row[8];
+                    H1_Q9 = row[9];
+
+                    H2_Q1 = row[10];
+                    H2_Q2 = row[11];
+                    H2_Q3 = row[12];
+                    H2_Q4 = row[13];
+                    H2_Q5 = row[14];
+                    H2_Q6 = row[15];
+                    H2_Q7 = row[16];
+                    H2_Q8 = row[17];
+                    H2_Q9 = row[18];
+
+                    H3_Q1 = row[19];
+                    H3_Q2 = row[20];
+                    H3_Q3 = row[21];
+                    H3_Q4 = row[22];
+                    H3_Q5 = row[23];
+                    H3_Q6 = row[24];
+                    H3_Q7 = row[25];
+                    H3_Q8 = row[26];
+                    H3_Q9 = row[27];
+
+                    H4_Q1 = row[28];
+                    H4_Q2 = row[29];
+                    H4_Q3 = row[30];
+                    H4_Q4 = row[31];
+                    H4_Q5 = row[32];
+                    H4_Q6 = row[33];
+                    H4_Q7 = row[34];
+                    H4_Q8 = row[35];
+                    H4_Q9 = row[36];
+
+
+
+                    choosen_action = parseInt(row[47]);
+                    console.log(row[47])
+
+                    // var text_choosen_Action = "no"
+
+
+                    if (time_stemp == 1) {
+                        text_choosen_Action = "move up ";
+                    }
+                    if (time_stemp == 2) {
+                        text_choosen_Action = "move right ";
+                    }
+                    if (time_stemp == 3) {
+                        text_choosen_Action = "move left ";
+                    }
+                    if (time_stemp == 4) {
+                        text_choosen_Action = "move up";
+                    }
+                    if (time_stemp == 5) {
+                        text_choosen_Action = "move right ";
+                    }
+
+
+                    document.getElementById('video_1_case').innerHTML = "Scenario " + case_number;
+                    document.getElementById('introduction_1').innerHTML = "The choosen action is: ";
+                    document.getElementById('action_1').innerHTML = text_choosen_Action;
+
+                    if (time_stemp == 1) {
+                        xs_action.push("move up", "move left");
+                        ys_H1a.push(H1_Q9, H1_Q4)
+                        ys_H2a.push(H2_Q9, H2_Q4)
+                        ys_H3a.push(H3_Q9, H3_Q4)
+                        ys_H4a.push(H4_Q9, H4_Q4)
+                        max_value.push(choosen_action)
+                    }
+
+                    if (time_stemp == 2) {
+                        xs_action.push("move right", "move left");
+                        ys_H1a.push(H1_Q1, H1_Q9)
+                        ys_H2a.push(H2_Q1, H2_Q9)
+                        ys_H3a.push(H3_Q1, H3_Q9)
+                        ys_H4a.push(H4_Q1, H4_Q9)
+                        max_value.push(choosen_action)
+                    }
+
+                    if (time_stemp == 3) {
+                        xs_action.push("move left", "move right");
+                        ys_H1a.push(H1_Q9, H1_Q8)
+                        ys_H2a.push(H2_Q9, H2_Q8)
+                        ys_H3a.push(H3_Q9, H3_Q8)
+                        ys_H4a.push(H4_Q9, H4_Q8)
+                        max_value.push(choosen_action)
+                    }
+
+                    if (time_stemp == 4) {
+                        xs_action.push("move up", "move right");
+                        ys_H1a.push(H1_Q9, H1_Q8)
+                        ys_H2a.push(H2_Q9, H2_Q8)
+                        ys_H3a.push(H3_Q9, H3_Q8)
+                        ys_H4a.push(H4_Q, H4_Q8)
+                        max_value.push(choosen_action)
+                    }
+
+                    if (time_stemp == 5) {
+                        xs_action.push("move right", "move left");
+                        ys_H1a.push(H1_Q6, H1_Q4)
+                        ys_H2a.push(H2_Q6, H2_Q4)
+                        ys_H3a.push(H3_Q6, H3_Q4)
+                        ys_H4a.push(H4_Q6, H4_Q4)
+                        max_value.push(choosen_action)
+                    }
+
+                }
+
+
+            });
+            return {
+                max_value,
+                xs_action,
+                ys_H1a,
+                ys_H2a,
+                ys_H3a,
+                ys_H4a
+            };
+        }
+    }
+</script>
+
+
+</html>
