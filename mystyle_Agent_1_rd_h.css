@@ -1,0 +1,44 @@
+#header {
+    position: absolute;
+    color: rgba(40, 16, 196, 0.966);
+    font-size: 30px;
+    /* border: 3px solid #ad2134; */
+}
+
+#video1 {
+    position: absolute;
+    left: 10px;
+    top: 80px;
+    width: 270px;
+    height: 300px;
+    /* border: 3px solid #ad2134; */
+}
+
+.buttons {
+    position: absolute;
+    top: 390PX;
+    /* border: 3px solid #fffb11; */
+}
+
+button:active {
+    background-color: red;
+}
+
+.Chart {
+    position: absolute;
+    text-align: center;
+    top: 450px;
+    width: 600px;
+    height: 350px;
+    /*border: 3px solid #ad8821;*/
+}
+
+.text {
+    position: absolute;
+    text-align: center;
+    top: 470px;
+    left: 700px;
+    width: 500px;
+    height: 200px;
+    /* border: 3px solid #7a21ad; */
+}
