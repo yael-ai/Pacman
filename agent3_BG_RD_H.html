@@ -272,53 +272,44 @@
                     }
 
 
-                    document.getElementById('video_1_case').innerHTML = "Scenario " + case_number;
-                    document.getElementById('introduction_1').innerHTML = "The chosen action is: ";
-                    document.getElementById('action_1').innerHTML = text_choosen_Action;
-
                     if (time_stemp == 1) {
-                        xs_action.push("move up ", "move down");
-                        ys_H1a.push(H1_Q2, H1_Q9)
-                        ys_H2a.push(H2_Q2, H2_Q9)
-                        ys_H3a.push(H3_Q2, H3_Q9)
-                        ys_H4a.push(H4_Q2, H4_Q9)
-                        max_value.push(choosen_action)
+                        xs_action.push("move up");
+                        ys_H1a.push(H1_Q2)
+                        ys_H2a.push(H2_Q2)
+                        ys_H3a.push(H3_Q2)
+                        ys_H4a.push(H4_Q2)
                     }
 
                     if (time_stemp == 2) {
-                        xs_action.push("move right", "move down");
-                        ys_H1a.push(H1_Q6, H1_Q8)
-                        ys_H2a.push(H2_Q6, H2_Q8)
-                        ys_H3a.push(H3_Q6, H3_Q8)
-                        ys_H4a.push(H4_Q6, H4_Q8)
-                        max_value.push(choosen_action)
+                        xs_action.push("move right");
+                        ys_H1a.push(H1_Q6)
+                        ys_H2a.push(H2_Q6)
+                        ys_H3a.push(H3_Q6)
+                        ys_H4a.push(H4_Q6)
                     }
 
                     if (time_stemp == 3) {
-                        xs_action.push("move right", "move left");
-                        ys_H1a.push(H1_Q6, H1_Q4)
-                        ys_H2a.push(H2_Q6, H2_Q4)
-                        ys_H3a.push(H3_Q6, H3_Q4)
-                        ys_H4a.push(H4_Q6, H4_Q4)
-                        max_value.push(choosen_action)
+                        xs_action.push("move right");
+                        ys_H1a.push(H1_Q6)
+                        ys_H2a.push(H2_Q6)
+                        ys_H3a.push(H3_Q6)
+                        ys_H4a.push(H4_Q6)
                     }
 
                     if (time_stemp == 4) {
-                        xs_action.push("move left", "move up");
-                        ys_H1a.push(H1_Q6, H1_Q3)
-                        ys_H2a.push(H2_Q6, H2_Q3)
-                        ys_H3a.push(H3_Q6, H3_Q3)
-                        ys_H4a.push(H4_Q6, H4_Q3)
-                        max_value.push(choosen_action)
+                        xs_action.push("move left");
+                        ys_H1a.push(H1_Q6)
+                        ys_H2a.push(H2_Q6)
+                        ys_H3a.push(H3_Q6)
+                        ys_H4a.push(H4_Q6)
                     }
 
                     if (time_stemp == 5) {
-                        xs_action.push("move left", "move right");
-                        ys_H1a.push(H1_Q6, H1_Q3)
-                        ys_H2a.push(H2_Q6, H2_Q3)
-                        ys_H3a.push(H3_Q6, H3_Q3)
-                        ys_H4a.push(H4_Q6, H4_Q3)
-                        max_value.push(choosen_action)
+                        xs_action.push("move left");
+                        ys_H1a.push(H1_Q6)
+                        ys_H2a.push(H2_Q6)
+                        ys_H3a.push(H3_Q6)
+                        ys_H4a.push(H4_Q6)
                     }
 
                 }
@@ -326,7 +317,6 @@
 
             });
             return {
-                max_value,
                 xs_action,
                 ys_H1a,
                 ys_H2a,
